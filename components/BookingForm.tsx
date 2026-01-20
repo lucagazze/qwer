@@ -8,8 +8,7 @@ const BookingForm: React.FC = () => {
     email: '',
     phone: '',
     service: 'Odontología General',
-    message: '', // Added message field
-    date: '',
+    message: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -20,25 +19,32 @@ const BookingForm: React.FC = () => {
     e.preventDefault();
     setStatus(AppointmentStatus.SUBMITTING);
     
-    // Tu ID real de Formspree
     const FORMSPREE_ID = 'xqeedngz'; 
 
+    // Preparamos los datos con nombres bonitos para que el correo se vea profesional
+    // Formspree usa las claves del objeto JSON como cabeceras de la tabla en el email
+    const payload = {
+      _subject: `🦷 Nueva Cita: ${formData.name} - ${formData.service}`, // Asunto claro
+      _replyto: formData.email, // Permite dar click en "Responder" y que vaya al cliente
+      "Nombre del Paciente": formData.name,
+      "Email de Contacto": formData.email,
+      "Teléfono": formData.phone,
+      "Servicio Solicitado": formData.service,
+      "Mensaje del Paciente": formData.message || "Sin mensaje adicional"
+    };
+
     try {
-      // Envío real a Formspree usando fetch para mantener el diseño personalizado
       const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `Nueva Cita: ${formData.name} - ${formData.service}`, // Asunto del correo mejorado
-        })
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
         setStatus(AppointmentStatus.SUCCESS);
-        // Limpiar formulario después de 5 segundos y volver al estado inicial
+        // Limpiar formulario después de 5 segundos
         setTimeout(() => {
           setStatus(AppointmentStatus.IDLE);
           setFormData({ 
@@ -47,7 +53,6 @@ const BookingForm: React.FC = () => {
             phone: '', 
             service: 'Odontología General', 
             message: '',
-            date: '' 
           });
         }, 5000);
       } else {
