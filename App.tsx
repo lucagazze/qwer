@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,7 +7,10 @@ import Doctors from './components/Doctors';
 import Testimonials from './components/Testimonials';
 import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
-import AIChatBot from './components/AIChatBot';
+
+// Lazy load the Chatbot because it imports the heavy Google GenAI SDK
+// This moves the JS out of the main bundle, speeding up initial load significantly
+const AIChatBot = React.lazy(() => import('./components/AIChatBot'));
 
 // ScrollToTop component ensures the page starts at the top when navigating
 const ScrollToTop = () => {
@@ -86,7 +89,9 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
-        <AIChatBot />
+        <Suspense fallback={null}>
+          <AIChatBot />
+        </Suspense>
       </div>
     </Router>
   );

@@ -66,14 +66,19 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
                 alt="Mujer sonriendo en consultorio dental moderno" 
                 className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" 
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAN2kYeVk8u7E4cwGiVVA2Tt0bKVEJcHcifuv6vdl9G-fOutq1D_mWjQ2ZRpFt1WzfTKQpzavPQgTLJtuLOY8gDdqvL_1EHps8X6Lsyv0U5K4vo_-9mHdg99RSQNaXuRufJWlD-pthq6EAEJJA-CKwcwsR7-QuLY_OGP3g_G5QE7tAiG44lPCGQhJZp-oG_pDP03-xMn-t7SshZCDaqYTqjISBRgr51c7CfP3KepukJ7pglE2dL40yX9b_7R1_2s7steZHc6jM5M"
+                width="600"
+                height="450"
+                // @ts-ignore
+                fetchpriority="high"
+                loading="eager"
               />
               
               {/* Floating Card */}
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-4 rounded-xl shadow-lg z-20 flex items-center justify-between border border-white/20">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-3">
-                    <img alt="Avatar 1" className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAvibzlIO87SxTfKDy5FSHeV83xTnMYU-DkfZca7Tvq9lhSR_HvIo49EsoeStGFoAbKKsjm2Jq4VPMf9WQmCWniPTgy2BEPq6iOwzgODIuFiw7R6HG2oeM26EIU6dAbRPgS1hZbfThBrBPd2PmhmcCVFAqX0MXpdL_enLxHGLhWgInOG00K3JUlzskByvgfg9QpG_EFNc4HdQEIcchlDAuvAJFqJPBRzaVIWr_TBRd6SJZ6EDCXt1_ihr1fwSq4kTHBh7xO1txrn0"/>
-                    <img alt="Avatar 2" className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkAY2CCn1XpUXeLebkP0j4e5BCkLFKV1q9Mkz29EMbADxnNmXJyC5-c4UQjK4ipOWjPEEOI6tFi4rzxIVFZIZybuF_zxAyCTOqoXzxGtrz3id0m5v2jHP3eSUHsZwA0p2iqDABkDyvnML5rI3sfitNCTH5ozA8aaY6vW6SVXdrY1P8hbrqkCH3thHh6Jwva3HiWIfE02RN46zvUmBz4HPLkhJw8OII7xSmcKrR8VyR8y2qJQ6m7rORmPaSG_k-Ua4hqvxYxct86_Q"/>
+                    <img width="40" height="40" alt="Avatar 1" className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAvibzlIO87SxTfKDy5FSHeV83xTnMYU-DkfZca7Tvq9lhSR_HvIo49EsoeStGFoAbKKsjm2Jq4VPMf9WQmCWniPTgy2BEPq6iOwzgODIuFiw7R6HG2oeM26EIU6dAbRPgS1hZbfThBrBPd2PmhmcCVFAqX0MXpdL_enLxHGLhWgInOG00K3JUlzskByvgfg9QpG_EFNc4HdQEIcchlDAuvAJFqJPBRzaVIWr_TBRd6SJZ6EDCXt1_ihr1fwSq4kTHBh7xO1txrn0"/>
+                    <img width="40" height="40" alt="Avatar 2" className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkAY2CCn1XpUXeLebkP0j4e5BCkLFKV1q9Mkz29EMbADxnNmXJyC5-c4UQjK4ipOWjPEEOI6tFi4rzxIVFZIZybuF_zxAyCTOqoXzxGtrz3id0m5v2jHP3eSUHsZwA0p2iqDABkDyvnML5rI3sfitNCTH5ozA8aaY6vW6SVXdrY1P8hbrqkCH3thHh6Jwva3HiWIfE02RN46zvUmBz4HPLkhJw8OII7xSmcKrR8VyR8y2qJQ6m7rORmPaSG_k-Ua4hqvxYxct86_Q"/>
                     <div className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 bg-primary flex items-center justify-center text-white text-xs font-bold">+2k</div>
                   </div>
                   <div className="flex flex-col">

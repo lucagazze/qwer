@@ -29,6 +29,10 @@ const Doctors: React.FC = () => {
                   alt="Dr. Sarah Smith smiling in dental scrubs" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF6yKOwEs0iWoqmMENyoSI9EnTPTSj20Cz1Z4rNwh9LlnzBdw5eV-n0yKVbzRS6vtuynq3iNf7NzxMV1ommbCz0bJOQaK4FzLSOQ-8QTfZn5h03Xm3ZJ3CaFkbqWlR-8ndz2eYxMwjGJfrH94wnP4Sv5BzkBAGJ9b7iGblOD-KkYHd2vr8jTbNFdEbNLGiajzAPm43ekMvL_ECR2R6zvyXgnMOiC2Q6SmunLoEjTHz5G--18catc2ig_In-4CaWG4zNSVZ07cTLfo"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="533"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
@@ -46,6 +50,10 @@ const Doctors: React.FC = () => {
                   alt="Dr. James Wilson smiling in a white coat" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJLMafKeuar8f-vLA5IoEN3TRojHswkalkhOYbY4neX1ScXhL8kRTCLfugCH2SKxShYizkKdOTBwBFw89VaRW83jwvBbzsZGSoZoJwgr0lFNbSsvlxq4jLZ67PyixXGhtA2YEC3p05nRUUNU9ukUGFuMlOv5KIdGRYjJznFm-k5xVQVf0jVkM7rxAOKzG53sZTvi3RUCuc-mS2efBXqaSEpyv5qNFNzQNjOjBPSBXW0fDCW1qT232jv_apopyl35a7C4VxgGg4I9g"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="533"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
@@ -63,6 +71,10 @@ const Doctors: React.FC = () => {
                   alt="Dr. Emily Chen smiling with dental tools in background" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuD99qGNEIi523mlEntf3-yU2_SFFoD7J930B1YoiVr8e4lvjUSs6tJJZr5yQYn5WrKxdYA4FFnka4GMG7o-4t590oWltwTTQrcTvpOgYW0kTQK0rojcB1Tudu8T1CLSazT_voHVGbRU3k17b5YZVHSrNmIlkkuVbpUqePtZXCupqIHqCeTNTXQ4gicJxt6q1UbZZxw2PlPmcXphXE25bsHbJanIP-q325fCMFFVH8TE29qVygX2lRMdfK76FZE6-fVUWR_41J10QC4"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="533"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
