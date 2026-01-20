@@ -37,9 +37,9 @@ const Header: React.FC = () => {
       <div className="container">
         <div className="header-content">
           {/* Logo */}
-          <Link to="/" className="logo">
+          <Link to="/" className="logo" aria-label="Clínica Javier Inicio">
             <div className="logo-icon">
-              <span className="material-symbols-outlined" style={{fontSize: '28px'}}>dentistry</span>
+              <span className="material-symbols-outlined" style={{fontSize: '28px'}} aria-hidden="true">dentistry</span>
             </div>
             <span>Clínica Javier</span>
           </Link>
@@ -59,7 +59,7 @@ const Header: React.FC = () => {
               onClick={() => handleNavClick('booking', true)}
               className="btn btn-primary btn-header-cta"
             >
-              <span className="material-symbols-outlined" style={{fontSize: '20px'}}>calendar_month</span>
+              <span className="material-symbols-outlined" style={{fontSize: '20px'}} aria-hidden="true">calendar_month</span>
               <span>Agendar Cita</span>
             </button>
           </nav>
@@ -68,8 +68,10 @@ const Header: React.FC = () => {
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="mobile-toggle"
+            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isOpen}
           >
-            <span className="material-symbols-outlined">menu</span>
+            <span className="material-symbols-outlined" aria-hidden="true">{isOpen ? 'close' : 'menu'}</span>
           </button>
         </div>
       </div>

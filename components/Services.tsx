@@ -53,24 +53,24 @@ const Services: React.FC<ServicesProps> = ({ limit }) => {
           {displayedServices.map((service, index) => (
             <div key={index} className="service-card">
               <div className="service-icon">
-                <span className="material-symbols-outlined" style={{fontSize: '32px'}}>{service.icon}</span>
+                <span className="material-symbols-outlined" style={{fontSize: '32px'}} aria-hidden="true">{service.icon}</span>
               </div>
-              <h4 className="service-title">{service.title}</h4>
+              <h3 className="service-title">{service.title}</h3>
               <p className="service-desc">{service.desc}</p>
               
               {!limit && (
                 <ul className="feature-list">
                   {service.features.map((feature, idx) => (
                     <li key={idx}>
-                      <span className="material-symbols-outlined" style={{color: 'var(--primary)', fontSize: '18px'}}>check_small</span>
+                      <span className="material-symbols-outlined" style={{color: 'var(--primary-dark)', fontSize: '18px'}} aria-hidden="true">check_small</span>
                       {feature}
                     </li>
                   ))}
                 </ul>
               )}
 
-              <a href="#" className="link-arrow">
-                Saber Más <span className="material-symbols-outlined" style={{fontSize: '16px'}}>arrow_forward</span>
+              <a href="#" className="link-arrow" aria-label={`Saber más sobre ${service.title}`}>
+                Saber Más <span className="material-symbols-outlined" style={{fontSize: '16px'}} aria-hidden="true">arrow_forward</span>
               </a>
             </div>
           ))}

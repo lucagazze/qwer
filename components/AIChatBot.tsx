@@ -62,28 +62,30 @@ const AIChatBot: React.FC = () => {
 
   if (!isOpen) {
     return (
-      <button onClick={() => setIsOpen(true)} className="chatbot-trigger">
-        <MessageCircle size={32} />
+      <button onClick={() => setIsOpen(true)} className="chatbot-trigger" aria-label="Abrir asistente virtual">
+        <MessageCircle size={32} aria-hidden="true" />
       </button>
     );
   }
 
   return (
-    <div className="chat-window" style={isMinimized ? { height: '60px' } : {}}>
-      <div className="chat-header" onClick={() => setIsMinimized(!isMinimized)}>
+    <div className="chat-window" style={isMinimized ? { height: '60px' } : {}} role="dialog" aria-label="Chat con asistente virtual">
+      <div className="chat-header" onClick={() => setIsMinimized(!isMinimized)} role="button" aria-expanded={!isMinimized} tabIndex={0}>
         <div style={{display:'flex', alignItems:'center', gap:'0.5rem'}}>
-          <Sparkles size={18} />
+          <Sparkles size={18} aria-hidden="true" />
           <span style={{fontWeight:600}}>Javier AI</span>
         </div>
         <div style={{display:'flex', gap:'0.5rem'}} onClick={(e) => e.stopPropagation()}>
-          <button onClick={() => setIsMinimized(!isMinimized)}>{isMinimized ? <Maximize2 size={16}/> : <Minimize2 size={16}/>}</button>
-          <button onClick={() => setIsOpen(false)}><X size={16}/></button>
+          <button onClick={() => setIsMinimized(!isMinimized)} aria-label={isMinimized ? "Maximizar chat" : "Minimizar chat"}>
+            {isMinimized ? <Maximize2 size={16}/> : <Minimize2 size={16}/>}
+          </button>
+          <button onClick={() => setIsOpen(false)} aria-label="Cerrar chat"><X size={16}/></button>
         </div>
       </div>
 
       {!isMinimized && (
         <>
-          <div className="chat-body">
+          <div className="chat-body" role="log" aria-live="polite">
             {messages.map((msg) => (
               <div key={msg.id} className={`msg ${msg.role === 'user' ? 'msg-user' : 'msg-bot'}`}>
                 {msg.text}
@@ -102,9 +104,10 @@ const AIChatBot: React.FC = () => {
               placeholder="Escribe aquí..."
               className="input-field"
               disabled={isLoading}
+              aria-label="Escribe tu mensaje"
             />
-            <button onClick={handleSend} disabled={isLoading || !inputValue.trim()} style={{color:'var(--primary)'}}>
-              <Send size={20} />
+            <button onClick={handleSend} disabled={isLoading || !inputValue.trim()} style={{color:'var(--primary-dark)'}} aria-label="Enviar mensaje">
+              <Send size={20} aria-hidden="true" />
             </button>
           </div>
         </>
