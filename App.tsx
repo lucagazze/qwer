@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
         </div>
         <Services limit={3} />
         <div className="text-center mt-10">
-           <a href="/services" className="inline-flex items-center justify-center gap-2 text-primary font-bold hover:underline">
+           <a href="/#/services" className="inline-flex items-center justify-center gap-2 text-primary font-bold hover:underline">
              View All Services <span className="material-symbols-outlined text-sm">arrow_forward</span>
            </a>
         </div>
