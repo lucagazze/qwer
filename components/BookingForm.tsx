@@ -98,21 +98,21 @@ const BookingForm: React.FC = () => {
 
               <div className="form-grid">
                 <div>
-                  <label htmlFor="name" className="hidden">Nombre</label>
+                  <label htmlFor="name" className="sr-only">Nombre Completo</label>
                   <input id="name" type="text" name="name" required placeholder="Nombre Completo" value={formData.name} onChange={handleChange} className="form-input" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="hidden">Email</label>
+                  <label htmlFor="email" className="sr-only">Correo Electrónico</label>
                   <input id="email" type="email" name="email" required placeholder="Correo Electrónico" value={formData.email} onChange={handleChange} className="form-input" />
                 </div>
               </div>
               <div className="form-grid">
                  <div>
-                   <label htmlFor="phone" className="hidden">Teléfono</label>
+                   <label htmlFor="phone" className="sr-only">Teléfono</label>
                    <input id="phone" type="tel" name="phone" required placeholder="Número de Teléfono" value={formData.phone} onChange={handleChange} className="form-input" />
                  </div>
                 <div>
-                  <label htmlFor="service" className="hidden">Servicio</label>
+                  <label htmlFor="service" className="sr-only">Seleccionar Servicio</label>
                   <select id="service" name="service" value={formData.service} onChange={handleChange} className="form-select">
                     <option style={{color:'#333'}} value="Odontología General">Odontología General</option>
                     <option style={{color:'#333'}} value="Ortodoncia">Ortodoncia</option>
@@ -123,11 +123,12 @@ const BookingForm: React.FC = () => {
               </div>
 
               <div style={{marginBottom:'1rem'}}>
+                <label htmlFor="message" className="sr-only">Mensaje</label>
                 <textarea id="message" name="message" placeholder="¿Alguna nota adicional?" value={formData.message} onChange={handleChange} rows={3} className="form-input" style={{resize:'none'}} />
               </div>
 
               <div style={{display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1.5rem'}}>
-                  <input id="privacy" name="privacy" type="checkbox" checked={formData.privacy} onChange={handleChange} style={{width:'1.2rem', height:'1.2rem', cursor:'pointer'}} />
+                  <input id="privacy" name="privacy" type="checkbox" checked={formData.privacy} onChange={handleChange} style={{width:'1.2rem', height:'1.2rem', cursor:'pointer', accentColor: '#14b8a6'}} />
                 <label htmlFor="privacy" style={{fontSize: '0.9rem', color: '#9ca3af', cursor:'pointer'}}>
                   Acepto el procesamiento de mis datos personales.
                 </label>

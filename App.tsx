@@ -1,19 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Doctors from './components/Doctors';
-import Testimonials from './components/Testimonials';
-import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+
+// Lazy Load heavy components
+const Services = React.lazy(() => import('./components/Services'));
+const Doctors = React.lazy(() => import('./components/Doctors'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const BookingForm = React.lazy(() => import('./components/BookingForm'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 };
+
+// Loading placeholder to prevent layout shift during lazy load
+const SectionLoader = () => (
+  <div style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--text-muted)' }}>
+    Cargando...
+  </div>
+);
 
 const HomePage: React.FC = () => {
   const handleBookNow = () => {
@@ -23,21 +32,33 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Hero onBookNow={handleBookNow} />
+      
       <section className="section">
         <div className="container text-center" style={{marginBottom: '3rem'}}>
           <h2 className="text-primary font-bold" style={{textTransform:'uppercase', fontSize:'0.85rem', letterSpacing:'1px', marginBottom:'0.5rem'}}>Lo Que Hacemos</h2>
           <h3 style={{fontSize:'2rem', fontWeight:800}}>Nuestros Servicios Principales</h3>
         </div>
-        <Services limit={3} />
+        <Suspense fallback={<SectionLoader />}>
+          <Services limit={3} />
+        </Suspense>
         <div className="text-center" style={{marginTop:'3rem'}}>
            <a href="/#/services" className="link-arrow">
              Ver Todos los Servicios <span className="material-symbols-outlined" style={{fontSize: '16px'}}>arrow_forward</span>
            </a>
         </div>
       </section>
-      <Doctors />
-      <Testimonials />
-      <BookingForm />
+
+      <Suspense fallback={<SectionLoader />}>
+        <Doctors />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <Testimonials />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <BookingForm />
+      </Suspense>
     </>
   );
 };
@@ -51,7 +72,9 @@ const ServicesPage: React.FC = () => {
           La tecnología de vanguardia se encuentra con el cuidado compasivo.
         </p>
       </div>
-      <Services /> 
+      <Suspense fallback={<SectionLoader />}>
+        <Services /> 
+      </Suspense>
       <div className="section text-center">
         <h3 style={{fontSize:'2rem', fontWeight:700, marginBottom:'1.5rem'}}>¿Necesitas un plan personalizado?</h3>
         <button 

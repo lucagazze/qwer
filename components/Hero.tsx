@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
             <img 
               alt="Paciente sonriendo en una consulta dental moderna" 
               className="hero-image" 
-              src="https://images.unsplash.com/photo-1606811971618-4486d14f3f72?auto=format&fit=crop&q=80&w=1200&h=900"
+              src="https://images.unsplash.com/photo-1606811971618-4486d14f3f72?auto=format&fit=crop&q=80&w=1200&h=900&fmt=webp"
               width="600"
               height="450"
               // @ts-ignore

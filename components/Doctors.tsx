@@ -27,7 +27,7 @@ const Doctors: React.FC = () => {
               <img 
                 alt="Dra. Sarah Smith, Dentista Principal" 
                 className="doctor-img" 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=533"
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=533&fmt=webp"
                 width="400"
                 height="533"
                 loading="lazy"
@@ -43,7 +43,7 @@ const Doctors: React.FC = () => {
               <img 
                 alt="Dr. James Wilson, Ortodoncista" 
                 className="doctor-img" 
-                src="https://images.unsplash.com/photo-1622253692010-333f2da60a71?auto=format&fit=crop&q=80&w=400&h=533"
+                src="https://images.unsplash.com/photo-1622253692010-333f2da60a71?auto=format&fit=crop&q=80&w=400&h=533&fmt=webp"
                 width="400"
                 height="533"
                 loading="lazy"
@@ -59,7 +59,7 @@ const Doctors: React.FC = () => {
               <img 
                 alt="Dra. Emily Chen, Odontopediatra" 
                 className="doctor-img" 
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400&h=533"
+                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400&h=533&fmt=webp"
                 width="400"
                 height="533"
                 loading="lazy"
