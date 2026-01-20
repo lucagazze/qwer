@@ -3,6 +3,9 @@ import { AppointmentStatus } from '../types';
 
 const BookingForm: React.FC = () => {
   const [status, setStatus] = useState<AppointmentStatus>(AppointmentStatus.IDLE);
+  
+  // Mantenemos el estado solo para controlar los inputs (UX), 
+  // pero el envío se hará con FormData como pediste.
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,7 +13,7 @@ const BookingForm: React.FC = () => {
     service: 'Odontología General',
     message: '',
     privacy: false,
-    botcheck: false // Honeypot: Campo trampa para bots
+    botcheck: false
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -23,17 +26,10 @@ const BookingForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Si el campo botcheck (oculto) fue marcado, es un bot.
-    // Simulamos éxito pero no enviamos nada.
-    if (formData.botcheck) {
-      console.log("Bot detectado");
-      setStatus(AppointmentStatus.SUCCESS);
-      return;
-    }
-
+    // Validación básica de privacidad
     if (!formData.privacy) {
       alert("Por favor acepta la política de privacidad para continuar.");
       return;
@@ -41,43 +37,43 @@ const BookingForm: React.FC = () => {
 
     setStatus(AppointmentStatus.SUBMITTING);
     
-    const WEB3FORMS_ACCESS_KEY = '392a0797-bcaa-4eb1-8b30-1b03db06d3ec';
-
-    const payload = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      
-      // Configuración del Correo
-      subject: `📅 Nueva Cita: ${formData.name} - ${formData.service}`,
-      from_name: "Clínica Javier Web",
-      replyto: formData.email, 
-      
-      // Habilitar Honeypot en el backend (debe coincidir con el input name="botcheck" vacío)
-      // Web3Forms revisará si enviamos algo en un campo llamado 'botcheck' si usamos formulario HTML,
-      // pero en JSON debemos asegurarnos de no enviar basura.
-      
-      // Datos Visibles en el Correo
-      "Nombre del Paciente": formData.name,
-      "Correo Electrónico": formData.email,
-      "Teléfono de Contacto": formData.phone,
-      "Tipo de Servicio": formData.service,
-      "Mensaje / Notas": formData.message || "Sin mensaje adicional",
-      "Consentimiento": "Política de Privacidad Aceptada ✅"
-    };
+    // Creamos el FormData directamente del formulario HTML
+    const formPayload = new FormData(e.currentTarget);
+    
+    // --- TRUCO PARA EMAIL EN ESPAÑOL ---
+    // Web3Forms usa los "names" de los inputs como etiquetas.
+    // Aquí los renombramos antes de enviar para que te llegue bonito.
+    formPayload.append("Nombre del Paciente", formPayload.get("name") as string);
+    formPayload.delete("name");
+    
+    formPayload.append("Correo Electrónico", formPayload.get("email") as string);
+    formPayload.delete("email");
+    
+    formPayload.append("Teléfono de Contacto", formPayload.get("phone") as string);
+    formPayload.delete("phone");
+    
+    formPayload.append("Servicio Solicitado", formPayload.get("service") as string);
+    formPayload.delete("service");
+    
+    formPayload.append("Mensaje del Paciente", formPayload.get("message") as string);
+    formPayload.delete("message");
+    
+    // Agregamos configuraciones extra (Asunto, Key, etc.)
+    formPayload.append("access_key", "392a0797-bcaa-4eb1-8b30-1b03db06d3ec");
+    formPayload.append("subject", `📅 Nueva Cita: ${formData.name} - ${formData.service}`);
+    formPayload.append("from_name", "Clínica Javier Web");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        method: "POST",
+        body: formPayload
       });
 
       const data = await response.json();
 
       if (data.success) {
         setStatus(AppointmentStatus.SUCCESS);
+        // Limpiamos el formulario visualmente
         setTimeout(() => {
           setStatus(AppointmentStatus.IDLE);
           setFormData({ 
@@ -91,18 +87,13 @@ const BookingForm: React.FC = () => {
           });
         }, 8000);
       } else {
-        console.error("Error al enviar formulario", data);
-        // Mensaje específico si el usuario olvidó desactivar el Captcha
-        if (data.message && data.message.includes("hCaptcha")) {
-          alert("Error de Configuración: Por favor desactiva el 'Captcha' en el panel de configuración de tu Access Key en Web3Forms (revisa tu email).");
-        } else {
-          alert("Hubo un problema enviando el formulario: " + (data.message || "Error desconocido"));
-        }
+        console.error("Error Web3Forms:", data);
+        alert(data.message || "Hubo un error al enviar el formulario.");
         setStatus(AppointmentStatus.IDLE);
       }
     } catch (error) {
       console.error("Error de red:", error);
-      alert("Error de conexión. Intenta nuevamente.");
+      alert("Error de conexión.");
       setStatus(AppointmentStatus.IDLE);
     }
   };

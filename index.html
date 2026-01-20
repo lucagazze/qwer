@@ -35,10 +35,13 @@
     <meta property="twitter:description" content="Cuidado dental moderno y amable. Reserva tu cita hoy." />
     <meta property="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAN2kYeVk8u7E4cwGiVVA2Tt0bKVEJcHcifuv6vdl9G-fOutq1D_mWjQ2ZRpFt1WzfTKQpzavPQgTLJtuLOY8gDdqvL_1EHps8X6Lsyv0U5K4vo_-9mHdg99RSQNaXuRufJWlD-pthq6EAEJJA-CKwcwsR7-QuLY_OGP3g_G5QE7tAiG44lPCGQhJZp-oG_pDP03-xMn-t7SshZCDaqYTqjISBRgr51c7CfP3KepukJ7pglE2dL40yX9b_7R1_2s7steZHc6jM5M" />
     
-    <!-- Fonts (Combined Request) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <!-- Fonts (Non-Blocking) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    </noscript>
 
-    <!-- Tailwind CSS (CDN restore for broken styles) -->
+    <!-- Tailwind CSS via CDN (Restored for immediate styling fix) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
       tailwind.config = {
@@ -58,7 +61,7 @@
               "display": ["Plus Jakarta Sans", "sans-serif"],
               "sans": ["Plus Jakarta Sans", "sans-serif"]
             },
-            borderRadius: {
+             borderRadius: {
               "DEFAULT": "0.5rem",
               "lg": "1rem",
               "xl": "1.5rem",
