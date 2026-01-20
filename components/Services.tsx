@@ -8,39 +8,39 @@ const Services: React.FC<ServicesProps> = ({ limit }) => {
   const allServices = [
     {
       icon: 'dentistry',
-      title: 'General Dentistry',
-      desc: 'Comprehensive checkups, hygiene cleanings, and preventative care designed for the whole family\'s long-term health.',
-      features: ['Regular Checkups', 'Deep Cleaning', 'Fillings & Sealants']
+      title: 'Odontología General',
+      desc: 'Chequeos completos, limpiezas de higiene y cuidado preventivo diseñado para la salud a largo plazo de toda la familia.',
+      features: ['Chequeos Regulares', 'Limpieza Profunda', 'Empastes y Selladores']
     },
     {
       icon: 'orthopedics',
-      title: 'Orthodontics',
-      desc: 'Modern braces and clear aligners designed to give you a straighter, healthier, and more confident smile.',
-      features: ['Invisalign', 'Traditional Braces', 'Retainers']
+      title: 'Ortodoncia',
+      desc: 'Brackets modernos y alineadores transparentes diseñados para darte una sonrisa más recta, saludable y segura.',
+      features: ['Invisalign', 'Brackets Tradicionales', 'Retenedores']
     },
     {
       icon: 'auto_awesome',
-      title: 'Cosmetic Dentistry',
-      desc: 'Professional whitening, veneers, and bonding to enhance the natural beauty of your teeth and boost your confidence.',
-      features: ['Teeth Whitening', 'Porcelain Veneers', 'Smile Makeovers']
+      title: 'Cosmética Dental',
+      desc: 'Blanqueamiento profesional, carillas y adhesión para realzar la belleza natural de tus dientes y aumentar tu confianza.',
+      features: ['Blanqueamiento Dental', 'Carillas de Porcelana', 'Diseño de Sonrisa']
     },
     {
       icon: 'child_care',
-      title: 'Pediatric Dentistry',
-      desc: 'Gentle, specialized care for children to ensure they develop healthy habits and a positive relationship with dental health.',
-      features: ['First Visits', 'Fluoride Treatment', 'Sealants']
+      title: 'Odontopediatría',
+      desc: 'Cuidado suave y especializado para niños, asegurando que desarrollen hábitos saludables y una relación positiva con la salud dental.',
+      features: ['Primeras Visitas', 'Tratamiento con Flúor', 'Selladores']
     },
     {
       icon: 'medical_services',
-      title: 'Oral Surgery',
-      desc: 'Expert surgical procedures including extractions and implants, performed with maximum comfort and safety in mind.',
-      features: ['Wisdom Teeth', 'Dental Implants', 'Bone Grafting']
+      title: 'Cirugía Oral',
+      desc: 'Procedimientos quirúrgicos expertos, incluyendo extracciones e implantes, realizados con la máxima comodidad y seguridad.',
+      features: ['Muelas del Juicio', 'Implantes Dentales', 'Injertos Óseos']
     },
     {
       icon: 'emergency',
-      title: 'Emergency Care',
-      desc: 'Same-day appointments for urgent dental issues. We are here when you need us most to relieve pain and fix problems.',
-      features: ['Toothaches', 'Broken Teeth', 'Lost Fillings']
+      title: 'Atención de Urgencia',
+      desc: 'Citas el mismo día para problemas dentales urgentes. Estamos aquí cuando más nos necesitas para aliviar el dolor.',
+      features: ['Dolores de Muelas', 'Dientes Rotos', 'Empastes Perdidos']
     }
   ];
 
@@ -70,7 +70,7 @@ const Services: React.FC<ServicesProps> = ({ limit }) => {
               )}
 
               <a href="#" className="inline-flex items-center text-primary font-bold text-sm hover:underline mt-auto">
-                Learn More <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                Saber Más <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
               </a>
             </div>
           ))}

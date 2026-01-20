@@ -7,16 +7,16 @@ const Doctors: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           {/* Text Content */}
           <div className="flex-1 lg:sticky lg:top-24">
-            <h2 className="text-primary font-bold tracking-wide uppercase text-sm mb-3">Meet The Team</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Expert Care from People Who Care</h3>
+            <h2 className="text-primary font-bold tracking-wide uppercase text-sm mb-3">Conoce al Equipo</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Atención Experta de Personas que se Preocupan</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-              At Clinica Dental, we believe that the best dental care comes from a team that truly listens. Our specialists are not only highly trained in the latest dental technologies but are also dedicated to making your visit as comfortable as possible.
+              En Clínica Javier, creemos que el mejor cuidado dental proviene de un equipo que realmente escucha. Nuestros especialistas no solo están altamente capacitados en las últimas tecnologías dentales, sino que también se dedican a hacer que su visita sea lo más cómoda posible.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              From the moment you walk through our doors, you'll feel the difference. We take the time to explain your options, answer your questions, and build a treatment plan that fits your life.
+              Desde el momento en que cruzas nuestras puertas, sentirás la diferencia. Nos tomamos el tiempo para explicarte tus opciones, responder tus preguntas y crear un plan de tratamiento que se adapte a tu vida.
             </p>
             <button className="bg-white dark:bg-white/10 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:border-primary font-bold py-3 px-8 rounded-xl transition-all hover:bg-gray-50 dark:hover:bg-white/5">
-              Read Our Story
+              Nuestra Historia
             </button>
           </div>
 
@@ -32,10 +32,10 @@ const Doctors: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
-                  <h4 className="text-white text-xl font-bold">Dr. Sarah Smith</h4>
-                  <p className="text-primary text-sm font-medium mb-2">Lead Dentist</p>
+                  <h4 className="text-white text-xl font-bold">Dra. Sarah Smith</h4>
+                  <p className="text-primary text-sm font-medium mb-2">Dentista Principal</p>
                   <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-300 opacity-0 group-hover:opacity-100">
-                    <p className="text-gray-300 text-sm">Specializing in reconstructive dentistry with 15 years of experience.</p>
+                    <p className="text-gray-300 text-sm">Especialista en odontología reconstructiva con 15 años de experiencia.</p>
                   </div>
                 </div>
               </div>
@@ -50,9 +50,9 @@ const Doctors: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
                   <h4 className="text-white text-xl font-bold">Dr. James Wilson</h4>
-                  <p className="text-primary text-sm font-medium mb-2">Orthodontist</p>
+                  <p className="text-primary text-sm font-medium mb-2">Ortodoncista</p>
                   <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-300 opacity-0 group-hover:opacity-100">
-                    <p className="text-gray-300 text-sm">Expert in Invisalign and clear braces for teens and adults.</p>
+                    <p className="text-gray-300 text-sm">Experto en Invisalign y brackets transparentes para adolescentes y adultos.</p>
                   </div>
                 </div>
               </div>
@@ -66,10 +66,10 @@ const Doctors: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full">
-                  <h4 className="text-white text-xl font-bold">Dr. Emily Chen</h4>
-                  <p className="text-primary text-sm font-medium mb-2">Pediatric Dentist</p>
+                  <h4 className="text-white text-xl font-bold">Dra. Emily Chen</h4>
+                  <p className="text-primary text-sm font-medium mb-2">Odontopediatra</p>
                   <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-300 opacity-0 group-hover:opacity-100">
-                    <p className="text-gray-300 text-sm">Making dental visits fun and fearless for our youngest patients.</p>
+                    <p className="text-gray-300 text-sm">Haciendo que las visitas al dentista sean divertidas y sin miedo para nuestros pacientes más jóvenes.</p>
                   </div>
                 </div>
               </div>

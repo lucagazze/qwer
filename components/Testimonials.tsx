@@ -8,11 +8,11 @@ const Testimonials: React.FC = () => {
           <span className="material-symbols-outlined text-primary text-3xl">format_quote</span>
         </div>
         <blockquote className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white max-w-4xl mx-auto leading-tight mb-8">
-            "I used to be terrified of the dentist. The team at Clinica Dental completely changed that. It felt more like a spa visit than a medical appointment!"
+            "Antes me aterraba ir al dentista. El equipo de Clínica Javier cambió eso por completo. ¡Se sintió más como una visita al spa que una cita médica!"
         </blockquote>
         <div className="flex flex-col items-center justify-center gap-2">
           <cite className="not-italic text-lg font-bold text-gray-900 dark:text-white">Rebecca Morgan</cite>
-          <span className="text-gray-500 dark:text-gray-400 text-sm">Patient since 2019</span>
+          <span className="text-gray-500 dark:text-gray-400 text-sm">Paciente desde 2019</span>
         </div>
       </div>
     </section>

@@ -10,30 +10,26 @@ const Header: React.FC = () => {
     setIsOpen(false);
     
     if (isAnchor) {
-      // If we are not on home, go home first then scroll
       if (location.pathname !== '/') {
         navigate('/');
-        // We need a small timeout to allow navigation to complete before scrolling
         setTimeout(() => {
           const element = document.getElementById(target);
           if (element) element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        // We are on home, just scroll
         const element = document.getElementById(target);
         if (element) element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // It's a page route
       navigate(target);
     }
   };
 
   const navItems = [
-    { label: 'Home', path: '/', isAnchor: false },
-    { label: 'Services', path: '/services', isAnchor: false },
-    { label: 'Team', path: 'doctors', isAnchor: true },
-    { label: 'Testimonials', path: 'testimonials', isAnchor: true },
+    { label: 'Inicio', path: '/', isAnchor: false },
+    { label: 'Servicios', path: '/services', isAnchor: false },
+    { label: 'Equipo', path: 'doctors', isAnchor: true },
+    { label: 'Testimonios', path: 'testimonials', isAnchor: true },
   ];
 
   return (
@@ -45,7 +41,7 @@ const Header: React.FC = () => {
             <div className="flex items-center justify-center size-10 rounded-xl bg-primary/10 text-primary">
               <span className="material-symbols-outlined text-3xl">dentistry</span>
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Clinica Vitalis</span>
+            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Clínica Javier</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -72,7 +68,7 @@ const Header: React.FC = () => {
               className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5"
             >
               <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-              <span>Book Appointment</span>
+              <span>Agendar Cita</span>
             </button>
             
             {/* Mobile Menu Button */}
@@ -103,7 +99,7 @@ const Header: React.FC = () => {
               onClick={() => handleNavClick('booking', true)}
               className="w-full mt-4 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-bold py-3 px-6 rounded-xl"
             >
-              Book Appointment
+              Agendar Cita
             </button>
           </div>
         </div>

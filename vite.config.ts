@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
+    base: './', // Ensures relative paths for assets, fixing preview loading issues
     plugins: [react()],
     define: {
       // Polyfill process.env.API_KEY so it works in the client browser

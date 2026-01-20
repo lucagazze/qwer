@@ -10,7 +10,7 @@ const AIChatBot: React.FC = () => {
     {
       id: 'welcome',
       role: 'model',
-      text: '¡Hola! Soy Vitalis AI, el asistente virtual de la clínica. ¿En qué puedo ayudarte hoy? Puedo informarte sobre nuestros servicios, horarios o ayudarte a agendar una cita.'
+      text: '¡Hola! Soy Javier AI, el asistente virtual de la clínica. ¿En qué puedo ayudarte hoy? Puedo informarte sobre nuestros servicios, horarios o ayudarte a agendar una cita.'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -118,7 +118,7 @@ const AIChatBot: React.FC = () => {
             <Sparkles className="h-4 w-4 text-white" />
           </div>
           <div>
-            <h3 className="font-semibold text-sm">Vitalis AI</h3>
+            <h3 className="font-semibold text-sm">Javier AI</h3>
             {!isMinimized && <p className="text-xs text-primary-100">Asistente Virtual</p>}
           </div>
         </div>
@@ -190,7 +190,7 @@ const AIChatBot: React.FC = () => {
               </button>
             </div>
             <p className="text-xs text-slate-400 mt-2 text-center">
-              Vitalis AI puede cometer errores. No reemplaza consejo médico profesional.
+              Javier AI puede cometer errores. No reemplaza consejo médico profesional.
             </p>
           </div>
         </>
