@@ -1,53 +1,25 @@
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 let chatSession: Chat | null = null;
 
-const SYSTEM_INSTRUCTION = `
-Eres el asistente virtual "Javier AI" de la Clínica Javier.
-Tu objetivo es ayudar a los pacientes con información sobre la clínica, sus servicios, y responder preguntas generales de salud.
-
-Reglas clave:
-1. Sé amable, profesional y empático.
-2. Tus respuestas deben ser concisas y claras.
-3. Si te preguntan por diagnósticos médicos específicos, DEBES incluir un descargo de responsabilidad diciendo que no eres un médico y que deben agendar una cita con un especialista.
-4. Los servicios de la clínica incluyen: Odontología General, Ortodoncia, Cosmética Dental, Odontopediatría y Cirugía Oral.
-5. Puedes ayudar a explicar cómo agendar una cita (usando el formulario en la web).
-6. Habla siempre en español.
-`;
-
-const getChatSession = () => {
+export const sendMessageToGemini = async function* (message: string) {
   if (!chatSession) {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     chatSession = ai.chats.create({
       model: 'gemini-3-flash-preview',
       config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
+        systemInstruction: 'Eres Javier AI, el asistente virtual de Clínica Javier. Tu misión es responder preguntas sobre servicios dentales (Odontología General, Ortodoncia, Cosmética, Odontopediatría, Cirugía Oral, Urgencias) y ayudar a agendar citas dirigiendo a los usuarios a la sección de contacto o WhatsApp. Sé amable, conciso y profesional. No des diagnósticos médicos.',
       },
     });
   }
-  return chatSession;
-};
 
-export const sendMessageToGemini = async (message: string): Promise<AsyncIterable<string>> => {
-  const chat = getChatSession();
-  
-  try {
-    const streamResult = await chat.sendMessageStream({ message });
-    
-    // Create an async generator to yield text chunks
-    async function* textGenerator() {
-      for await (const chunk of streamResult) {
-        // According to guidelines, access .text directly
-        const text = chunk.text;
-        if (text) {
-          yield text;
-        }
-      }
+  const response = await chatSession.sendMessageStream({ message });
+
+  for await (const chunk of response) {
+    const c = chunk as GenerateContentResponse;
+    if (c.text) {
+      yield c.text;
     }
-
-    return textGenerator();
-  } catch (error) {
-    console.error("Error sending message to Gemini:", error);
-    throw error;
   }
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,8 +7,7 @@ import Doctors from './components/Doctors';
 import Testimonials from './components/Testimonials';
 import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
-
-const AIChatBot = React.lazy(() => import('./components/AIChatBot'));
+import WhatsAppButton from './components/WhatsAppButton';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -79,9 +78,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
-        <Suspense fallback={null}>
-          <AIChatBot />
-        </Suspense>
+        <WhatsAppButton />
       </div>
     </Router>
   );
