@@ -8,41 +8,31 @@ import Testimonials from './components/Testimonials';
 import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
 
-// Lazy load the Chatbot because it imports the heavy Google GenAI SDK
-// This moves the JS out of the main bundle, speeding up initial load significantly
 const AIChatBot = React.lazy(() => import('./components/AIChatBot'));
 
-// ScrollToTop component ensures the page starts at the top when navigating
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 };
 
-// Page Components
 const HomePage: React.FC = () => {
   const handleBookNow = () => {
-    const element = document.getElementById('booking');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
       <Hero onBookNow={handleBookNow} />
-      {/* We show a preview of services on Home */}
-      <section className="py-20 bg-white dark:bg-gray-900/50">
-        <div className="text-center mb-10">
-          <h2 className="text-primary font-bold tracking-wide uppercase text-sm mb-3">Lo Que Hacemos</h2>
-          <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Nuestros Servicios Principales</h3>
+      <section className="section">
+        <div className="container text-center" style={{marginBottom: '3rem'}}>
+          <h2 className="text-primary font-bold" style={{textTransform:'uppercase', fontSize:'0.85rem', letterSpacing:'1px', marginBottom:'0.5rem'}}>Lo Que Hacemos</h2>
+          <h3 style={{fontSize:'2rem', fontWeight:800}}>Nuestros Servicios Principales</h3>
         </div>
         <Services limit={3} />
-        <div className="text-center mt-10">
-           <a href="/#/services" className="inline-flex items-center justify-center gap-2 text-primary font-bold hover:underline">
-             Ver Todos los Servicios <span className="material-symbols-outlined text-sm">arrow_forward</span>
+        <div className="text-center" style={{marginTop:'3rem'}}>
+           <a href="/#/services" className="link-arrow">
+             Ver Todos los Servicios <span className="material-symbols-outlined" style={{fontSize: '16px'}}>arrow_forward</span>
            </a>
         </div>
       </section>
@@ -56,18 +46,18 @@ const HomePage: React.FC = () => {
 const ServicesPage: React.FC = () => {
   return (
     <div>
-      <div className="bg-primary/5 py-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Nuestros Servicios</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-          La tecnología de vanguardia se encuentra con el cuidado compasivo. Explora nuestra gama completa de tratamientos dentales.
+      <div className="section section-bg text-center">
+        <h1 style={{fontSize:'3rem', fontWeight:800, marginBottom:'1rem'}}>Nuestros Servicios</h1>
+        <p style={{maxWidth:'600px', margin:'0 auto', color:'var(--text-gray)', fontSize:'1.1rem'}}>
+          La tecnología de vanguardia se encuentra con el cuidado compasivo.
         </p>
       </div>
       <Services /> 
-      <div className="py-20 bg-gray-50 dark:bg-background-dark text-center">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">¿Necesitas un plan de tratamiento personalizado?</h3>
+      <div className="section text-center">
+        <h3 style={{fontSize:'2rem', fontWeight:700, marginBottom:'1.5rem'}}>¿Necesitas un plan personalizado?</h3>
         <button 
            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-           className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg"
+           className="btn btn-primary"
         >
           Contáctanos Hoy
         </button>
@@ -80,9 +70,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-background-light dark:bg-background-dark">
+      <div style={{display:'flex', flexDirection:'column', minHeight:'100vh'}}>
         <Header />
-        <main className="flex-grow w-full">
+        <main style={{flexGrow: 1}}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />

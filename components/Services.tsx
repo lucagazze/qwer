@@ -47,30 +47,30 @@ const Services: React.FC<ServicesProps> = ({ limit }) => {
   const displayedServices = limit ? allServices.slice(0, limit) : allServices;
 
   return (
-    <section id="services" className={`relative ${limit ? '' : 'py-12 bg-white dark:bg-background-dark'}`}>
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="services" className={`section ${!limit ? 'section-bg' : ''}`}>
+      <div className="container">
+        <div className="grid grid-3">
           {displayedServices.map((service, index) => (
-            <div key={index} className="group bg-background-light dark:bg-[#1b2027] p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-800 flex flex-col h-full">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                <span className="material-symbols-outlined text-3xl">{service.icon}</span>
+            <div key={index} className="service-card">
+              <div className="service-icon">
+                <span className="material-symbols-outlined" style={{fontSize: '32px'}}>{service.icon}</span>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h4>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow">{service.desc}</p>
+              <h4 className="service-title">{service.title}</h4>
+              <p className="service-desc">{service.desc}</p>
               
               {!limit && (
-                <ul className="mb-6 space-y-2">
+                <ul className="feature-list">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                      <span className="material-symbols-outlined text-primary text-[16px] mr-2">check_small</span>
+                    <li key={idx}>
+                      <span className="material-symbols-outlined" style={{color: 'var(--primary)', fontSize: '18px'}}>check_small</span>
                       {feature}
                     </li>
                   ))}
                 </ul>
               )}
 
-              <a href="#" className="inline-flex items-center text-primary font-bold text-sm hover:underline mt-auto">
-                Saber Más <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+              <a href="#" className="link-arrow">
+                Saber Más <span className="material-symbols-outlined" style={{fontSize: '16px'}}>arrow_forward</span>
               </a>
             </div>
           ))}

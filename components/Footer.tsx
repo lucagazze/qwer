@@ -2,88 +2,65 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="bg-gray-50 dark:bg-[#15191f] pt-16 pb-8 border-t border-gray-100 dark:border-gray-800">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer id="contact" className="footer">
+      <div className="container">
+        <div className="grid grid-4">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10 text-primary">
-                <span className="material-symbols-outlined text-xl">dentistry</span>
+            <div style={{display:'flex', alignItems:'center', gap:'0.5rem', fontWeight:'bold', fontSize:'1.1rem'}}>
+              <div style={{width:'2rem', height:'2rem', background:'rgba(91,200,193,0.15)', borderRadius:'0.25rem', display:'flex', alignItems:'center', justifyContent:'center', color:'var(--primary)'}}>
+                <span className="material-symbols-outlined" style={{fontSize: '20px'}}>dentistry</span>
               </div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">Clínica Javier</span>
+              <span>Clínica Javier</span>
             </div>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                Brindando cuidado dental suave y moderno para toda la familia. Tu sonrisa es nuestra pasión.
+            <p style={{fontSize:'0.9rem', color:'var(--text-gray)'}}>
+                Brindando cuidado dental suave y moderno para toda la familia.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-4">Enlaces Rápidos</h4>
-            <ul className="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400">
-              <li><a className="hover:text-primary transition-colors" href="#">Nosotros</a></li>
-              <li><a className="hover:text-primary transition-colors" href="#">Servicios</a></li>
-              <li><a className="hover:text-primary transition-colors" href="#">Equipo</a></li>
-              <li><a className="hover:text-primary transition-colors" href="#">Testimonios</a></li>
-              <li><a className="hover:text-primary transition-colors" href="#">Carreras</a></li>
+            <h4 className="footer-heading">Enlaces Rápidos</h4>
+            <ul className="footer-links">
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Servicios</a></li>
+              <li><a href="#">Equipo</a></li>
+              <li><a href="#">Testimonios</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-4">Contacto</h4>
-            <ul className="flex flex-col gap-3 text-sm text-gray-500 dark:text-gray-400">
-              <li className="flex items-start gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px] mt-0.5">location_on</span>
-                <span>123 Wellness Blvd, Suite 400<br/>San Francisco, CA 94103</span>
+            <h4 className="footer-heading">Contacto</h4>
+            <ul className="footer-links">
+              <li className="flex" style={{gap:'0.5rem'}}>
+                <span className="material-symbols-outlined" style={{fontSize:'18px', color:'var(--primary)'}}>location_on</span>
+                <span>123 Wellness Blvd<br/>San Francisco, CA</span>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px]">phone</span>
+              <li className="flex items-center" style={{gap:'0.5rem'}}>
+                <span className="material-symbols-outlined" style={{fontSize:'18px', color:'var(--primary)'}}>phone</span>
                 <span>(555) 123-4567</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[18px]">mail</span>
-                <span>hola@clinicajavier.com</span>
               </li>
             </ul>
           </div>
 
           {/* Hours */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-4">Horarios de Atención</h4>
-            <ul className="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400">
-              <li className="flex justify-between">
-                <span>Lun - Vie</span>
-                <span className="font-medium text-gray-900 dark:text-white">8:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sábado</span>
-                <span className="font-medium text-gray-900 dark:text-white">9:00 AM - 2:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Domingo</span>
-                <span className="text-primary font-medium">Cerrado</span>
-              </li>
+            <h4 className="footer-heading">Horarios</h4>
+            <ul className="footer-links">
+              <li className="justify-between flex"><span>L-V</span> <span>8am - 6pm</span></li>
+              <li className="justify-between flex"><span>Sáb</span> <span>9am - 2pm</span></li>
+              <li className="justify-between flex"><span>Dom</span> <span style={{color:'var(--primary)'}}>Cerrado</span></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-400">© 2024 Clínica Javier. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            <a className="text-gray-400 hover:text-primary transition-colors" href="#">
-              <span className="sr-only">Facebook</span>
-              <span className="text-sm font-medium">FB</span>
-            </a>
-            <a className="text-gray-400 hover:text-primary transition-colors" href="#">
-              <span className="sr-only">Instagram</span>
-              <span className="text-sm font-medium">IG</span>
-            </a>
-            <a className="text-gray-400 hover:text-primary transition-colors" href="#">
-              <span className="sr-only">Twitter</span>
-              <span className="text-sm font-medium">TW</span>
-            </a>
+        <div className="footer-bottom">
+          <p>© 2024 Clínica Javier. Todos los derechos reservados.</p>
+          <div style={{display:'flex', gap:'1.5rem'}}>
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">TW</a>
           </div>
         </div>
       </div>

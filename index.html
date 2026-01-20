@@ -41,38 +41,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
     </noscript>
 
-    <!-- Tailwind CSS via CDN (Restored for immediate styling fix) -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#5bc8c1",
-              "primary-dark": "#4ab3ad",
-              "accent": "#FFDAB9",
-              "background-light": "#fafafa",
-              "background-dark": "#1b2027",
-              "text-dark": "#333333",
-              "text-light": "#f9fbfb",
-            },
-            fontFamily: {
-              "display": ["Plus Jakarta Sans", "sans-serif"],
-              "sans": ["Plus Jakarta Sans", "sans-serif"]
-            },
-             borderRadius: {
-              "DEFAULT": "0.5rem",
-              "lg": "1rem",
-              "xl": "1.5rem",
-              "2xl": "2rem",
-              "full": "9999px"
-            },
-          },
-        },
-      }
-    </script>
-
   <script type="importmap">
 {
   "imports": {
@@ -88,7 +56,7 @@
 }
 </script>
 </head>
-  <body class="bg-background-light dark:bg-background-dark text-text-dark font-display antialiased overflow-x-hidden min-h-screen">
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
