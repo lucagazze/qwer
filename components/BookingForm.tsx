@@ -9,12 +9,12 @@ const BookingForm: React.FC = () => {
     phone: '',
     service: 'Odontología General',
     message: '',
-    privacy: false // Nuevo campo de privacidad
+    privacy: false,
+    botcheck: false // Honeypot: Campo trampa para bots
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
-    // Manejo especial para el checkbox
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData({ ...formData, [name]: checked });
@@ -26,6 +26,14 @@ const BookingForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Si el campo botcheck (oculto) fue marcado, es un bot.
+    // Simulamos éxito pero no enviamos nada.
+    if (formData.botcheck) {
+      console.log("Bot detectado");
+      setStatus(AppointmentStatus.SUCCESS);
+      return;
+    }
+
     if (!formData.privacy) {
       alert("Por favor acepta la política de privacidad para continuar.");
       return;
@@ -33,22 +41,27 @@ const BookingForm: React.FC = () => {
 
     setStatus(AppointmentStatus.SUBMITTING);
     
-    // Web3Forms Access Key
     const WEB3FORMS_ACCESS_KEY = '392a0797-bcaa-4eb1-8b30-1b03db06d3ec';
 
-    // Payload para Web3Forms (JSON)
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `🦷 Cita Web: ${formData.name} - ${formData.service}`,
-      from_name: "Clínica Javier Web",
       
-      // Campos del formulario
-      name: formData.name,
-      email: formData.email, // Web3Forms usa esto automáticamente para Reply-To
-      phone: formData.phone,
-      service: formData.service,
-      message: formData.message || "Sin mensaje adicional",
-      privacy_accepted: "Aceptado"
+      // Configuración del Correo
+      subject: `📅 Nueva Cita: ${formData.name} - ${formData.service}`,
+      from_name: "Clínica Javier Web",
+      replyto: formData.email, 
+      
+      // Habilitar Honeypot en el backend (debe coincidir con el input name="botcheck" vacío)
+      // Web3Forms revisará si enviamos algo en un campo llamado 'botcheck' si usamos formulario HTML,
+      // pero en JSON debemos asegurarnos de no enviar basura.
+      
+      // Datos Visibles en el Correo
+      "Nombre del Paciente": formData.name,
+      "Correo Electrónico": formData.email,
+      "Teléfono de Contacto": formData.phone,
+      "Tipo de Servicio": formData.service,
+      "Mensaje / Notas": formData.message || "Sin mensaje adicional",
+      "Consentimiento": "Política de Privacidad Aceptada ✅"
     };
 
     try {
@@ -73,12 +86,18 @@ const BookingForm: React.FC = () => {
             phone: '', 
             service: 'Odontología General', 
             message: '',
-            privacy: false
+            privacy: false,
+            botcheck: false
           });
-        }, 8000); // Damos más tiempo para leer el mensaje de éxito
+        }, 8000);
       } else {
         console.error("Error al enviar formulario", data);
-        alert("Hubo un problema enviando el formulario. Verifica los campos.");
+        // Mensaje específico si el usuario olvidó desactivar el Captcha
+        if (data.message && data.message.includes("hCaptcha")) {
+          alert("Error de Configuración: Por favor desactiva el 'Captcha' en el panel de configuración de tu Access Key en Web3Forms (revisa tu email).");
+        } else {
+          alert("Hubo un problema enviando el formulario: " + (data.message || "Error desconocido"));
+        }
         setStatus(AppointmentStatus.IDLE);
       }
     } catch (error) {
@@ -118,6 +137,18 @@ const BookingForm: React.FC = () => {
              </div>
           ) : (
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4 relative z-20">
+              
+              {/* Campo Honeypot (Oculto) - Protección Spam */}
+              <input 
+                type="checkbox" 
+                name="botcheck" 
+                checked={formData.botcheck}
+                onChange={handleChange}
+                className="hidden" 
+                style={{ display: 'none' }}
+                autoComplete="off"
+              />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="text-left">
                   <label htmlFor="name" className="sr-only">Nombre Completo</label>
@@ -190,7 +221,7 @@ const BookingForm: React.FC = () => {
                 />
               </div>
 
-              {/* Checkbox de Privacidad - Vital para profesionalismo */}
+              {/* Checkbox de Privacidad */}
               <div className="flex items-start gap-3 text-left px-1">
                 <div className="flex items-center h-5">
                   <input
