@@ -49,12 +49,6 @@ const Services: React.FC<ServicesProps> = ({ limit }) => {
   return (
     <section id="services" className={`relative ${limit ? '' : 'py-12 bg-white dark:bg-background-dark'}`}>
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        {!limit && (
-           <div className="text-center max-w-3xl mx-auto mb-16 hidden">
-             {/* Header handled by parent page if not limited */}
-           </div>
-        )}
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedServices.map((service, index) => (
             <div key={index} className="group bg-background-light dark:bg-[#1b2027] p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-800 flex flex-col h-full">

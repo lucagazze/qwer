@@ -30,13 +30,13 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Hero onBookNow={handleBookNow} />
-      {/* We show a preview of services on Home, but maybe a simplified version or the full grid */}
+      {/* We show a preview of services on Home */}
       <section className="py-20 bg-white dark:bg-gray-900/50">
         <div className="text-center mb-10">
           <h2 className="text-primary font-bold tracking-wide uppercase text-sm mb-3">What We Do</h2>
           <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Our Core Services</h3>
         </div>
-        <Services limit={3} /> {/* Reusing Services component slightly differently */}
+        <Services limit={3} />
         <div className="text-center mt-10">
            <a href="/services" className="inline-flex items-center justify-center gap-2 text-primary font-bold hover:underline">
              View All Services <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -74,15 +74,6 @@ const ServicesPage: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const handleNavigate = (id: string) => {
-    // This handler will be passed to Header, but Header now handles routing too.
-    // We keep this for scrolling within the same page if needed.
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <Router>
       <ScrollToTop />
