@@ -3,6 +3,8 @@ export default {
   content: [
     "./index.html",
     "./**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./services/**/*.{js,ts,jsx,tsx}"
   ],
   darkMode: "class",
   theme: {
@@ -20,10 +22,13 @@ export default {
         "display": ["Plus Jakarta Sans", "sans-serif"],
         "sans": ["Plus Jakarta Sans", "sans-serif"]
       },
+      // Restoring the specific border-radius defaults from the CDN version
       borderRadius: {
+        "DEFAULT": "0.5rem",
         "lg": "1rem",
         "xl": "1.5rem",
-        "2xl": "2rem"
+        "2xl": "2rem",
+        "full": "9999px"
       },
     },
   },
