@@ -33,31 +33,37 @@ const BookingForm: React.FC = () => {
 
     setStatus(AppointmentStatus.SUBMITTING);
     
-    const FORMSPREE_ID = 'xqeedngz'; 
+    // Web3Forms Access Key
+    const WEB3FORMS_ACCESS_KEY = '392a0797-bcaa-4eb1-8b30-1b03db06d3ec';
 
-    // Payload optimizado para apariencia profesional en bandeja de entrada
+    // Payload para Web3Forms (JSON)
     const payload = {
-      _subject: `🦷 Cita Web: ${formData.name} - ${formData.service}`,
-      _replyto: formData.email, // Vital para responder directamente al paciente
-      _language: "es", // Fuerza mensajes de error/sistema en Español
-      "Nombre del Paciente": formData.name,
-      "Email de Contacto": formData.email,
-      "Teléfono": formData.phone,
-      "Servicio Solicitado": formData.service,
-      "Mensaje del Paciente": formData.message || "Sin mensaje adicional",
-      "Consentimiento Privacidad": "Aceptado"
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `🦷 Cita Web: ${formData.name} - ${formData.service}`,
+      from_name: "Clínica Javier Web",
+      
+      // Campos del formulario
+      name: formData.name,
+      email: formData.email, // Web3Forms usa esto automáticamente para Reply-To
+      phone: formData.phone,
+      service: formData.service,
+      message: formData.message || "Sin mensaje adicional",
+      privacy_accepted: "Aceptado"
     };
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(payload)
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setStatus(AppointmentStatus.SUCCESS);
         setTimeout(() => {
           setStatus(AppointmentStatus.IDLE);
@@ -71,7 +77,6 @@ const BookingForm: React.FC = () => {
           });
         }, 8000); // Damos más tiempo para leer el mensaje de éxito
       } else {
-        const data = await response.json();
         console.error("Error al enviar formulario", data);
         alert("Hubo un problema enviando el formulario. Verifica los campos.");
         setStatus(AppointmentStatus.IDLE);
